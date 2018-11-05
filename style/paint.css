@@ -12,6 +12,7 @@ section#menu-container {
     /* border:1px solid red; */
     background-image:linear-gradient(lightgray, darkgray, gray);
     display:flex;
+    height:88px;
 }
 
 div {
@@ -31,6 +32,58 @@ div {
     margin:10px;
     line-height:1;
     background-image:linear-gradient(to right, firebrick, orange, yellow, lightgreen, skyblue, purple);
+}
+
+#color-container {
+    height:88px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.inline-block {
+    display:inline-block;
+}
+
+.color {
+    border-radius:50%;
+    border:3px solid black;
+    height:40px;
+    width:40px;
+    margin:4px;
+}
+
+.color#color-black {
+    background-color:black;
+    border:3px solid skyblue;
+}
+
+.color#color-red {
+    background-color:red;
+}
+
+.color#color-orange {
+    background-color:orange;
+}
+
+.color#color-yellow {
+    background-color:gold;
+}
+
+.color#color-green {
+    background-color:green;
+}
+
+.color#color-blue {
+    background-color:blue;
+}
+
+.color#color-purple {
+    background-color:purple;
+}
+
+.color#color-brown {
+    background-color:brown;
 }
 
 .canvas-container {
