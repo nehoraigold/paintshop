@@ -4,7 +4,7 @@ font-family: 'Dancing Script', cursive;
 */
 
 body {
-    background-color:black;
+    background-color:green;
 }
 
 section#menu-container {
@@ -35,7 +35,7 @@ div {
 
 .canvas-container {
     text-align:center;
-    background-color:black;
+    background-color:green;
 }
 
 #canvas {
