@@ -10,6 +10,8 @@ var sizes = Array.from(document.getElementsByClassName('size'));
 var shapes = Array.from(document.getElementsByClassName('shape'));
 var canvas = document.getElementById('canvas');
 var mousedown = false;
+var zCounter = 0;
+var eraser = false;
 
 for (var i = 0; i < colors.length; i++) {
     colors[i].addEventListener('click', colorChange);
@@ -24,7 +26,7 @@ function colorChange(event) {
 }
 
 function sizeChange() {
-    var chosenSize = parseInt(sizes.filter(el => el.selected)[0].textContent.replace(" px",""));
+    var chosenSize = parseInt(sizes.filter(el => el.selected)[0].textContent.replace(" px", ""));
     paintbrush.size = chosenSize;
 }
 
@@ -45,7 +47,11 @@ function createDroplet(obj) {
     var canvasX = canvas.getBoundingClientRect().x;
     var canvasY = canvas.getBoundingClientRect().y;
     var droplet = document.createElement("div");
-    droplet.style.backgroundColor = paintbrush.color;
+    if (eraser) {
+        droplet.style.backgroundColor = "white";
+    } else {
+        droplet.style.backgroundColor = paintbrush.color;
+    }
     droplet.style.width = paintbrush.size + "px";
     droplet.style.height = paintbrush.size + "px";
     if (paintbrush.shape === "circle") {
@@ -54,6 +60,8 @@ function createDroplet(obj) {
     droplet.style.position = "absolute";
     droplet.style.left = (obj.clientX - canvasX - 4) + "px";
     droplet.style.top = (obj.clientY - canvasY - 4) + "px";
+    droplet.style.zIndex = zCounter;
+    zCounter++;
     return droplet;
 }
 
@@ -62,8 +70,12 @@ function paint(obj) {
         canvas.appendChild(createDroplet(obj));
     }
     if (mousedown) {
-        if (obj.target === canvas) {
+        if (eraser) {
             canvas.appendChild(createDroplet(obj));
+        } else {
+            // if (obj.target === canvas) {
+                canvas.appendChild(createDroplet(obj));
+            // }
         }
     }
 }
