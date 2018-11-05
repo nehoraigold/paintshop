@@ -4,13 +4,27 @@ font-family: 'Dancing Script', cursive;
 */
 
 section#menu-container {
-    height:150px;
-    border:1px solid red;
+    /* height:150px; */
+    /* border:1px solid red; */
     background-image:linear-gradient(lightgray, darkgray, gray);
     display:flex;
 }
 
 div {
-    border:1px solid green;
+    /* border:1px solid green; */
     display:inline-block;
+}
+
+.logo-font {
+    font-family:'Dancing Script', cursive;
+}
+
+#logo {
+    padding:10px;
+    border-radius:15px;
+    font-weight:600;
+    font-size:40px;
+    margin:10px;
+    line-height:1;
+    background-image:linear-gradient(to right, firebrick, orange, yellow, lightgreen, lightblue, purple);
 }
