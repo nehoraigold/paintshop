@@ -86,6 +86,13 @@ div {
     background-color:brown;
 }
 
+#brush-shape-container {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    margin:0px 10px;
+}
+
 .canvas-container {
     text-align:center;
     background-color:green;

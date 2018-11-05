@@ -1,11 +1,12 @@
 var paintbrush = {
     color: "black",
-    size: 10,
+    size: 4,
     shape: "circle"
 }
 
 var body = document.getElementsByTagName('body')[0];
 var colors = Array.from(document.getElementsByClassName('color'));
+var sizes = Array.from(document.getElementsByTagName('option'));
 var canvas = document.getElementById('canvas');
 var mousedown = false;
 
@@ -19,6 +20,15 @@ function colorChange(event) {
         colors[i].style.borderColor = "black";
     }
     event.target.style.borderColor = "skyblue";
+}
+
+function sizeChange() {
+    var chosenSize = parseInt(sizes.filter(el => el.selected)[0].textContent.replace(" px",""));
+    paintbrush.size = chosenSize;
+}
+
+function changeShape() {
+
 }
 
 function mouseHold(event) {
@@ -40,10 +50,8 @@ function createDroplet(obj) {
         droplet.style.borderRadius = "50%";
     }
     droplet.style.position = "absolute";
-    droplet.style.left = (obj.clientX - canvasX) + "px";
-    droplet.style.top = (obj.clientY - canvasY) + "px";
-    // droplet.style.left = (obj.offsetX - 4) + "px";
-    // droplet.style.top = (obj.offsetY - 4) + "px";
+    droplet.style.left = (obj.clientX - canvasX - 4) + "px";
+    droplet.style.top = (obj.clientY - canvasY - 4) + "px";
     return droplet;
 }
 
@@ -59,6 +67,7 @@ function paint(obj) {
 }
 
 document.getElementById('clear-canvas').addEventListener('click', function () { canvas.innerHTML = "" })
+document.getElementById('change-size').addEventListener('change',sizeChange);
 canvas.addEventListener('click', paint)
 canvas.addEventListener('mousemove', paint)
 body.addEventListener('mousedown', mouseHold);
