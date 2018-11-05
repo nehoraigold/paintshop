@@ -1,0 +1,16 @@
+/*
+font-family: 'Lato', sans-serif;
+font-family: 'Dancing Script', cursive;
+*/
+
+section#menu-container {
+    height:150px;
+    border:1px solid red;
+    background-image:linear-gradient(lightgray, darkgray, gray);
+    display:flex;
+}
+
+div {
+    border:1px solid green;
+    display:inline-block;
+}
