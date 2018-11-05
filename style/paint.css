@@ -3,6 +3,10 @@ font-family: 'Lato', sans-serif;
 font-family: 'Dancing Script', cursive;
 */
 
+body {
+    background-color:black;
+}
+
 section#menu-container {
     /* height:150px; */
     /* border:1px solid red; */
@@ -23,8 +27,21 @@ div {
     padding:10px;
     border-radius:15px;
     font-weight:600;
-    font-size:40px;
+    font-size:48px;
     margin:10px;
     line-height:1;
-    background-image:linear-gradient(to right, firebrick, orange, yellow, lightgreen, lightblue, purple);
+    background-image:linear-gradient(to right, firebrick, orange, yellow, lightgreen, skyblue, purple);
+}
+
+.canvas-container {
+    text-align:center;
+    background-color:black;
+}
+
+#canvas {
+    background-color:white;
+    height:500px;
+    width:500px;
+    margin:20px;
+    position:relative;
 }

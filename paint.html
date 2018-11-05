@@ -18,11 +18,17 @@
         <section id='menu-container' class='container-fluid'>
             <div class='row'>
                 <div id='logo' class='col-xs-3 logo-font'>PaintShop</div>
-                <div id='palette-container col-xs-6'></div>
-                <div class='button-container col-xs-3'>y</div>
+                <div class='palette-container col-xs-6'>
+                    <div id='color-container'></div>
+                    <div id='brush-size-container'></div>
+                    <div id='brush-shape-container'></div>
+                </div>
+                <div class='button-container col-xs-3'>
+                    <button id='clear-canvas'>Clear</button>
+                </div>
             </div>
         </section>
-        <section id='canvas-container'>
+        <section class='canvas-container'>
             <div id='canvas'></div>
         </section>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
