@@ -6,7 +6,8 @@ var paintbrush = {
 
 var body = document.getElementsByTagName('body')[0];
 var colors = Array.from(document.getElementsByClassName('color'));
-var sizes = Array.from(document.getElementsByTagName('option'));
+var sizes = Array.from(document.getElementsByClassName('size'));
+var shapes = Array.from(document.getElementsByClassName('shape'));
 var canvas = document.getElementById('canvas');
 var mousedown = false;
 
@@ -27,8 +28,9 @@ function sizeChange() {
     paintbrush.size = chosenSize;
 }
 
-function changeShape() {
-
+function shapeChange() {
+    var chosenShape = shapes.filter(el => el.selected)[0].textContent.toLowerCase();
+    paintbrush.shape = chosenShape;
 }
 
 function mouseHold(event) {
@@ -67,8 +69,9 @@ function paint(obj) {
 }
 
 document.getElementById('clear-canvas').addEventListener('click', function () { canvas.innerHTML = "" })
-document.getElementById('change-size').addEventListener('change',sizeChange);
-canvas.addEventListener('click', paint)
+document.getElementById('change-size').addEventListener('change', sizeChange);
+document.getElementById('change-shape').addEventListener('change', shapeChange);
+canvas.addEventListener('click', paint);
 canvas.addEventListener('mousemove', paint)
 body.addEventListener('mousedown', mouseHold);
 body.addEventListener('mouseup', mouseHold);
