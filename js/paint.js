@@ -6,6 +6,7 @@ var paintbrush = {
 
 var canvas = {
     element: document.getElementById('canvas'),
+    dropletCounter: 0
 }
 
 var palette = {
@@ -16,7 +17,6 @@ var palette = {
 
 var body = document.getElementsByTagName('body')[0];
 var mousedown = false;
-var zCounter = 0;
 
 
 function colorChange(event) {
@@ -58,8 +58,8 @@ function createDroplet(obj) {
     droplet.style.position = "absolute";
     droplet.style.left = (obj.clientX - canvasX - 4) + "px";
     droplet.style.top = (obj.clientY - canvasY - 4) + "px";
-    droplet.style.zIndex = zCounter;
-    zCounter++;
+    droplet.style.zIndex = canvas.dropletCounter;
+    canvas.dropletCounter++;
     return droplet;
 }
 
