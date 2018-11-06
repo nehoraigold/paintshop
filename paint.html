@@ -15,42 +15,45 @@
     </head>
 
     <body>
-        <section id='menu-container' class='container-fluid'>
-            <div class='row'>
-                <div id='logo' class='col-xs-3 logo-font'>PaintShop</div>
-                <div class='palette-container col-xs-4'>
-                    <div id='color-container'>
-                        <div>
-                            <div class='color' id='color-black'></div>
-                            <div class='color' id='color-red'></div>
-                            <div class='color' id='color-orange'></div>
-                            <div class='color' id='color-yellow'></div>
-                            <div class='color' id='color-green'></div>
-                            <div class='color' id='color-blue'></div>
-                            <div class='color' id='color-purple'></div>
-                            <div class='color' id='color-brown'></div>
-                        </div>
+        <section id='menu-container'>
+            <div id='logo' class='logo-font'>PaintShop</div>
+            <div id='palette-container'>
+                <div id='color-container'>
+                    <div>
+                        <div class='color' id='color-black'></div>
+                        <div class='color' id='color-red'></div>
+                        <div class='color' id='color-orange'></div>
+                        <div class='color' id='color-yellow'></div>
+                        <div class='color' id='color-green'></div>
+                        <div class='color' id='color-blue'></div>
+                        <div class='color' id='color-purple'></div>
+                        <div class='color' id='color-brown'></div>
+                        <div class='color' id='eraser'></div>
                     </div>
                 </div>
-                <div class='col-xs-2' id='brush-shape-container'>
-                    <select class='form-control' id='change-size'>
-                        <option class='size'>4 px</option>
-                        <option class='size'>10 px</option>
-                        <option class='size'>16 px</option>
-                        <option class='size'>24 px</option>
-                    </select>
-                    <select class='form-control' id='change-shape'>
-                        <option class='shape'>Circle</option>
-                        <option class='shape'>Square</option>
-                    </select>
-                </div>
-                <div class='button-container col-xs-3'>
-                    <button id='clear-canvas' type='button' class='btn'>Clear</button>
-                </div>
+            </div>
+            <div id='brush-shape-container'>
+                <select class='form-control' id='change-size'>
+                    <option class='size'>6 px</option>
+                    <option class='size'>10 px</option>
+                    <option class='size'>16 px</option>
+                    <option class='size'>24 px</option>
+                </select>
+                <select class='form-control' id='change-shape'>
+                    <option class='shape'>Circle</option>
+                    <option class='shape'>Square</option>
+                </select>
+            </div>
+            <div class='button-container'>
+                <button id='clear-canvas' type='button' class='btn'>Clear</button>
             </div>
         </section>
         <section class='canvas-container'>
+            <div></div>
+            <div></div>
             <div id='canvas'></div>
+            <div></div>
+            <div></div>
         </section>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
