@@ -58,8 +58,8 @@ function createDroplet(obj) {
     droplet.style.position = "absolute";
     droplet.style.left = (obj.clientX - canvasX - 4) + "px";
     droplet.style.top = (obj.clientY - canvasY - 4) + "px";
-    droplet.style.zIndex = canvas.dropletCounter;
-    canvas.dropletCounter++;
+    // droplet.style.zIndex = canvas.dropletCounter;
+    // canvas.dropletCounter++;
     return droplet;
 }
 

@@ -14,7 +14,7 @@
         <link rel='stylesheet' type='text/css' href='./style/paint.css'>
     </head>
 
-    <body>
+    <body class='background-color'>
         <section id='menu-container'>
             <div id='logo' class='logo-font'>PaintShop</div>
             <div id='palette-container'>
@@ -48,12 +48,10 @@
                 <button id='clear-canvas' type='button' class='btn'>Clear</button>
             </div>
         </section>
-        <section class='canvas-container'>
-            <div></div>
-            <div></div>
+        <section class='canvas-container row'>
             <div id='canvas'></div>
-            <div></div>
-            <div></div>
+            <div id='border-right' class='background-color'></div>
+            <div id='border-bottom' class='background-color'></div>
         </section>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
