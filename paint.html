@@ -16,19 +16,23 @@
 
     <body class='background-color'>
         <section id='menu-container'>
-            <div id='logo' class='logo-font'>PaintShop</div>
+            <div class='logo long'>PaintShop</div>
+            <div class='logo short'>PS</div>
             <div id='palette-container'>
                 <div id='color-container'>
                     <div>
-                        <div class='color' id='color-black'></div>
-                        <div class='color' id='color-red'></div>
-                        <div class='color' id='color-orange'></div>
-                        <div class='color' id='color-yellow'></div>
-                        <div class='color' id='color-green'></div>
-                        <div class='color' id='color-blue'></div>
-                        <div class='color' id='color-purple'></div>
-                        <div class='color' id='color-brown'></div>
-                        <div class='color' id='eraser'></div>
+                        <div>
+                            <div class='color' id='color-black'></div>
+                            <div class='color' id='color-red'></div>
+                            <div class='color' id='color-orange'></div>
+                            <div class='color' id='color-yellow'></div>
+                        </div>
+                        <div>
+                            <div class='color' id='color-green'></div>
+                            <div class='color' id='color-blue'></div>
+                            <div class='color' id='color-purple'></div>
+                            <div class='color' id='eraser'></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -45,7 +49,11 @@
                 </select>
             </div>
             <div class='button-container'>
-                <button id='clear-canvas' type='button' class='btn'>Clear</button>
+                <ul class='file-buttons center-align'>
+                    <li><button id='clear' type='button' class='btn'>Clear</button></li>
+                    <li><button id='load' type='button' class='btn'>Load</button></li>
+                    <li><button id='save' type='button' class='btn'>Save</button></li>
+                </ul>
             </div>
         </section>
         <section class='canvas-container row'>

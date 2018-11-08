@@ -21,6 +21,7 @@ paintbrush.colorChange = function (event) {
     }
     event.target.style.borderColor = "skyblue";
 }
+
 var canvas = {
     element: document.getElementById('canvas')
 }
@@ -50,6 +51,29 @@ canvas.createDroplet = function (obj) {
     return droplet;
 }
 
+canvas.save = function () {
+    var paintingName = prompt("Enter a name for your painting.");
+    canvasObj = {};
+    canvasObj.name = paintingName;
+    canvasObj.droplets = [];
+    var allDroplets = canvas.element.childNodes;
+    for (var i = 0; i < allDroplets.length; i++) {
+        var droplet = {};
+        droplet.size = allDroplets[i].style.height;
+        droplet.color = allDroplets[i].style.backgroundColor;
+        droplet.borderRadius = allDroplets[i].style.borderRadius;
+        droplet.top = allDroplets[i].style.top;
+        droplet.left = allDroplets[i].style.left;
+        canvasObj.droplets.push(droplet);
+    }
+    window.localStorage.setItem("painting", JSON.stringify(canvasObj));
+    alert("Your painting has been saved.");
+}
+
+canvas.load = function () {
+    alert("Painting loaded!");
+}
+
 canvas.bindCanvasActions = function () {
     canvas.element.addEventListener('click', mouseHold);
     canvas.element.addEventListener('click', canvas.paint);
@@ -72,7 +96,9 @@ palette.bindPaletteActions = function () {
 
 var menu = {
     bindMenuActions: function () {
-        document.getElementById('clear-canvas').addEventListener('click', function () { canvas.element.innerHTML = "" });
+        document.getElementById('clear').addEventListener('click', function () { canvas.element.innerHTML = "" });
+        document.getElementById('save').addEventListener('click', canvas.save);
+        document.getElementById('load').addEventListener('click', canvas.load);
         document.getElementById('change-size').addEventListener('change', paintbrush.sizeChange);
         document.getElementById('change-shape').addEventListener('change', paintbrush.shapeChange);
     }
@@ -81,7 +107,7 @@ var menu = {
 function bindWindowActions() {
     window.addEventListener('mousedown', mouseHold);
     window.addEventListener('mouseup', mouseHold);
-    window.addEventListener('click', mouseHold);    
+    window.addEventListener('click', mouseHold);
 }
 
 function startPaint() {

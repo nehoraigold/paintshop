@@ -2,6 +2,7 @@
 font-family: 'Lato', sans-serif;
 font-family: 'Dancing Script', cursive;
 */
+
 .background-color {
     background-color:green;
 }
@@ -21,16 +22,13 @@ div {
     display:inline-block;
 }
 
-.logo-font {
-    font-family:'Dancing Script', cursive;
-}
-
 .align-center {
     display:flex;
     justify-content:center;
 }
 
-#logo {
+.logo {
+    font-family:'Dancing Script', cursive;
     padding:10px;
     border-radius:15px;
     font-weight:600;
@@ -40,15 +38,18 @@ div {
     background-image:linear-gradient(to right, firebrick, orange, yellow, lightgreen, skyblue, purple);
 }
 
-#color-container {
-    height:88px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+.logo.short{
+    display:none;
 }
 
-.inline-block {
-    display:inline-block;
+#color-container {
+    /* border:1px solid red; */
+    width:auto;
+    height:88px;
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction:column;
+    justify-content:center;
 }
 
 .color {
@@ -61,7 +62,7 @@ div {
 
 .color#color-black {
     background-color:black;
-    border:3px solid skyblue;
+    border-color: skyblue;
 }
 
 .color#color-red {
@@ -85,7 +86,7 @@ div {
 }
 
 .color#color-purple {
-    background-color:purple;
+    background-color:indigo;
 }
 
 .color#color-brown {
@@ -95,7 +96,7 @@ div {
 .color#eraser {
     background-color:white;
     background-image:url('../images/eraser.png');
-    background-size:25px;
+    background-size:20px;
     background-repeat:no-repeat;
     background-position:center;
 }
@@ -105,6 +106,30 @@ div {
     flex-direction:column;
     justify-content:center;
     margin:0px 10px;
+}
+
+.button-container {
+    position:absolute;
+    width:250px;
+    height:inherit;
+    right:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+}
+
+.center-align {
+    display:flex;
+    justify-content:space-evenly;
+}
+
+.btn {
+    padding:10px 16px;
+    font-family: 'Lato', sans-serif;
+}
+
+button:focus {
+    outline:none;
 }
 
 .canvas-container {
@@ -137,4 +162,40 @@ div {
     width:500px;
     position:relative;
     left:15px;
+}
+
+.file-buttons {
+    list-style:none;
+    border:1px solid red;
+    margin-bottom:0px;
+    padding-inline-start:0px;
+}
+
+.file-buttons li {
+    display:inline-block;
+    border:1px solid blue;
+}
+
+@media screen and (max-width: 768px) {
+    .logo.long {
+        display:none;
+    }
+
+    .logo.short {
+        display:inline-block;
+    }
+
+    #color-container {
+        width:150px;
+    }
+
+    .color {
+        height:25px;
+        width:25px;
+        border-width:1px;
+    }
+
+    .color#eraser {
+        background-size:contain;
+    }
 }
