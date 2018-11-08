@@ -51,10 +51,16 @@ canvas.createDroplet = function (obj) {
     return droplet;
 }
 
+canvas.updateSize = function(obj) {
+    canvas.element.style.width = obj.target.value + "px";
+    canvas.element.style.height = obj.target.value + "px";
+}
+
 canvas.save = function () {
     var paintingName = prompt("Enter a name for your painting.");
     canvasObj = {};
     canvasObj.name = paintingName;
+    canvasObj.size = canvas.element.style.width;
     canvasObj.droplets = [];
     var allDroplets = canvas.element.childNodes;
     for (var i = 0; i < allDroplets.length; i++) {
@@ -71,6 +77,7 @@ canvas.save = function () {
 }
 
 canvas.load = function () {
+    
     alert("Painting loaded!");
 }
 
@@ -101,6 +108,7 @@ var menu = {
         document.getElementById('load').addEventListener('click', canvas.load);
         document.getElementById('change-size').addEventListener('change', paintbrush.sizeChange);
         document.getElementById('change-shape').addEventListener('change', paintbrush.shapeChange);
+        document.getElementById('canvas-size').addEventListener('input',canvas.updateSize);
     }
 }
 

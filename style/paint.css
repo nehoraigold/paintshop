@@ -20,7 +20,6 @@ section#menu-container {
 div {
     /* border:1px solid red; */
     display:inline-block;
-    line-height:0;
 }
 
 .logo {
@@ -216,5 +215,11 @@ div {
     .file-buttons li {
         display:block;
         margin:2px 2px;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .logo.short {
+        display:none;
     }
 }
