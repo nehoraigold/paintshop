@@ -60,7 +60,7 @@ canvas.save = function () {
     var paintingName = prompt("Enter a name for your painting.");
     canvasObj = {};
     canvasObj.name = paintingName;
-    canvasObj.size = canvas.element.style.width;
+    canvasObj.size = document.getElementById('canvas-size').value + "px";
     canvasObj.droplets = [];
     var allDroplets = canvas.element.childNodes;
     for (var i = 0; i < allDroplets.length; i++) {
@@ -77,8 +77,23 @@ canvas.save = function () {
 }
 
 canvas.load = function () {
-    
-    alert("Painting loaded!");
+    var canvasObj = JSON.parse(window.localStorage.painting);
+    canvas.element.style.width = canvasObj.size;
+    canvas.element.style.height = canvasObj.size;
+    document.getElementById('canvas-size').value = parseInt(canvasObj.size.replace("px",""));
+    var dropletObjects = canvasObj.droplets;
+    for (var i = 0; i < dropletObjects.length; i++) {
+        var dropletElement = document.createElement('div');
+        dropletElement.style.height = dropletObjects[i].size;
+        dropletElement.style.width = dropletObjects[i].size;
+        dropletElement.style.backgroundColor = dropletObjects[i].color;
+        dropletElement.style.borderRadius = dropletObjects[i].borderRadius;
+        dropletElement.style.top = dropletObjects[i].top;
+        dropletElement.style.left = dropletObjects[i].left;
+        dropletElement.style.position = "absolute";
+        canvas.element.appendChild(dropletElement);
+    }
+    alert("Painting \"" + canvasObj.name + "\" loaded!");
 }
 
 canvas.bindCanvasActions = function () {
