@@ -16,10 +16,10 @@ html, body {
 section#menu-container {
     /* height:150px; */
     /* border:1px solid red; */
-    background-image:linear-gradient(lightgray, darkgray, gray);
+    background-image:linear-gradient(lightgray, darkgray, gray, rgb(80, 80, 80));
     display:flex;
     height:88px;
-    z-index:2147483647;
+    z-index:123;
     position:relative;
 }
 
@@ -143,6 +143,12 @@ div {
     text-align:center;
 }
 
+input[type='text'], #canvas-size {
+    border-radius:5px;
+    border:0;
+    text-align:center;
+}
+
 .button-container {
     display:flex;
     align-items:center;
@@ -151,6 +157,10 @@ div {
 .btn {
     font-family: 'Lato', sans-serif;
     width:60px;
+    background-color:lightgray;
+}
+
+.btn:hover {
     background-color:white;
 }
 
@@ -183,6 +193,43 @@ div {
     left:15px;
     overflow:hidden;
     cursor:crosshair;
+}
+
+#modal {
+    background-color:rgba(0,0,0,0.5);
+    z-index:1234567;
+    position:fixed;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+}
+
+.modal-body {
+    position:absolute;
+    border-radius:5px;
+    box-shadow: 10px 10px 20px rgba(128, 128, 128, 0.5);
+    padding:30px;
+    height:200px;
+    top:50%;
+    left:50%;
+    transform:translateX(-50%) translateY(-50%);
+    background-color:lightgray;
+}
+
+#modal h4 {
+    font-family:'Dancing Script', cursive;
+    font-size:40px;
+}
+
+#modal button {
+    position:absolute;
+    bottom:20px;
+    right:20px;
+    background-color:white;
+    text-align:center;
+    padding:10px;
+    width:auto;
 }
 
 @media screen and (max-width: 768px) {
@@ -227,8 +274,6 @@ div {
     .btn {
         font-size:16px;
         padding:0;
-        height:25px;
-        width:60px;
     }
 
     .file-buttons li {
