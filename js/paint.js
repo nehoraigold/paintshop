@@ -15,11 +15,16 @@ paintbrush.shapeChange = function () {
 }
 
 paintbrush.colorChange = function (event) {
-    paintbrush.color = window.getComputedStyle(event.target).backgroundColor;
     for (var i = 0; i < palette.colors.length; i++) {
         palette.colors[i].style.borderColor = "black";
     }
+    palette.colorPicker.style.borderColor = "black";
     event.target.style.borderColor = "skyblue";
+    if (event.target === palette.colorPicker) {
+        paintbrush.color = palette.colorPicker.value;
+    } else {
+        paintbrush.color = window.getComputedStyle(event.target).backgroundColor;
+    }
 }
 
 var canvas = {
@@ -51,7 +56,7 @@ canvas.createDroplet = function (obj) {
     return droplet;
 }
 
-canvas.updateSize = function(obj) {
+canvas.updateSize = function (obj) {
     canvas.element.style.width = obj.target.value + "px";
     canvas.element.style.height = obj.target.value + "px";
     canvas.resizeBorders();
@@ -81,7 +86,7 @@ canvas.load = function () {
     var canvasObj = JSON.parse(window.localStorage.painting);
     canvas.element.style.width = canvasObj.size;
     canvas.element.style.height = canvasObj.size;
-    document.getElementById('canvas-size').value = parseInt(canvasObj.size.replace("px",""));
+    document.getElementById('canvas-size').value = parseInt(canvasObj.size.replace("px", ""));
     var dropletObjects = canvasObj.droplets;
     for (var i = 0; i < dropletObjects.length; i++) {
         var dropletElement = document.createElement('div');
@@ -106,25 +111,28 @@ canvas.bindCanvasActions = function () {
 var palette = {
     colors: Array.from(document.getElementsByClassName('color')),
     sizes: Array.from(document.getElementsByClassName('size')),
-    shapes: Array.from(document.getElementsByClassName('shape'))
+    shapes: Array.from(document.getElementsByClassName('shape')),
+    colorPicker: document.getElementById('color-picker')
 }
 
 palette.bindPaletteActions = function () {
     document.getElementById('change-size').addEventListener('change', paintbrush.sizeChange);
     document.getElementById('change-shape').addEventListener('change', paintbrush.shapeChange);
+    palette.colorPicker.addEventListener('change', paintbrush.colorChange);
     for (var i = 0; i < palette.colors.length; i++) {
         palette.colors[i].addEventListener('click', paintbrush.colorChange);
     }
 }
 
 var menu = {
+    element: document.getElementById('menu-container'),
     bindMenuActions: function () {
         document.getElementById('clear').addEventListener('click', function () { canvas.element.innerHTML = "" });
         document.getElementById('save').addEventListener('click', canvas.save);
         document.getElementById('load').addEventListener('click', canvas.load);
         document.getElementById('change-size').addEventListener('change', paintbrush.sizeChange);
         document.getElementById('change-shape').addEventListener('change', paintbrush.shapeChange);
-        document.getElementById('canvas-size').addEventListener('input',canvas.updateSize);
+        document.getElementById('canvas-size').addEventListener('input', canvas.updateSize);
     }
 }
 
@@ -132,8 +140,8 @@ function bindWindowActions() {
     window.addEventListener('mousedown', mouseHold);
     window.addEventListener('mouseup', mouseHold);
     window.addEventListener('click', mouseHold);
-    window.addEventListener('load',canvas.resizeBorders);
-    window.addEventListener('resize',canvas.resizeBorders);
+    window.addEventListener('load', canvas.resizeBorders);
+    window.addEventListener('resize', canvas.resizeBorders);
 }
 
 function startPaint() {
@@ -151,15 +159,43 @@ function mouseHold(event) {
     }
 }
 
-canvas.resizeBorders = function() {
-    MENU_HEIGHT = 88;
+// canvas.hideOutOfBoundsDroplets = function () {
+//     var allDroplets = canvas.element.childNodes;
+//     for (var i = 0; i < allDroplets.length; i++) {
+//         var rect = allDroplets[i].getBoundingClientRect();
+//         if ((rect.x + rect.width < 0) || (rect.y + rect.height < 0) || rect.x > window.innerWidth || rect.y > window.innerHeight) {
+//             allDroplets[i].style.display = "none";
+//         }
+//     }
+// }
+
+canvas.resizeBorders = function () {
+    MENU_HEIGHT = parseInt(menu.element.style.height.replace('px', "")) || parseInt(window.getComputedStyle(menu.element).height.replace("px", ""));
+    menuWidth = parseInt(menu.element.style.width.replace('px', '')) || parseInt(window.getComputedStyle(menu.element).width.replace('px', ''));
+    var rightBorder = document.getElementById('border-right');
+    var bottomBorder = document.getElementById('border-bottom');
     var screenWidth = window.innerWidth;
     var screenHeight = window.innerHeight;
-    document.getElementById('border-right').style.height = canvas.element.style.height || "500px";
+    var canvasSize = parseInt(document.getElementById('canvas-size'));
+    rightBorder.style.height = canvas.element.style.height || "500px";
     document.getElementsByClassName('flex')[0].style.height = canvas.element.style.height || "500px";
-    document.getElementById('border-bottom').style.width = "100%";
-    document.getElementById('border-right').style.width = (screenWidth - parseInt(document.getElementById('canvas-size').value)) + "px";
-    document.getElementById('border-bottom').style.height = (screenHeight - parseInt(document.getElementById('border-right').style.height.replace("px","")) - MENU_HEIGHT) + "px";
+    bottomBorder.style.width = "100%";
+    if (canvasSize > screenWidth) {
+        rightBorder.style.display = "none";
+    } else {
+        rightBorder.style.width = (screenWidth - canvas.element.offsetWidth) + "px";
+    }
+    if ((canvasSize + MENU_HEIGHT) > screenHeight) {
+        bottomBorder.style.display = "none";
+    } else {
+        bottomBorder.style.height = (screenHeight - canvas.element.offsetHeight - MENU_HEIGHT) + "px";
+    }
+    if (menuWidth < canvasSize) {
+        menu.element.style.width = canvasSize + "px";
+    } else {
+        menu.element.style.width = screenWidth + "px";
+    }
+    // canvas.hideOutOfBoundsDroplets();
 }
 
 var mousedown = false;
