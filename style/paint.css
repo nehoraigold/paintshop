@@ -139,7 +139,7 @@ div {
 }
 
 #choose-size-container, .color-picker-container {
-    margin:10px 5px;
+    margin:15px 5px;
     text-align:center;
 }
 
@@ -175,30 +175,13 @@ div {
     flex-wrap:nowrap;
 }
 
-#border-right {
-    display:block;
-    width:60px;
-    position:relative;
-    z-index:2147483647;
-    left:15px;
-    overflow:hidden;
-}
-
-#border-bottom {
-    display:block;
-    width:100%;
-    position:relative;
-    z-index:2147483647;
-    left:15px;
-    overflow:hidden;
-}
-
 #canvas {
     background-color:white;
     height:500px;
     width:500px;
     position:relative;
     left:15px;
+    overflow:hidden;
 }
 
 @media screen and (max-width: 768px) {

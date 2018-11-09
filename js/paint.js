@@ -159,45 +159,6 @@ function mouseHold(event) {
     }
 }
 
-// canvas.hideOutOfBoundsDroplets = function () {
-//     var allDroplets = canvas.element.childNodes;
-//     for (var i = 0; i < allDroplets.length; i++) {
-//         var rect = allDroplets[i].getBoundingClientRect();
-//         if ((rect.x + rect.width < 0) || (rect.y + rect.height < 0) || rect.x > window.innerWidth || rect.y > window.innerHeight) {
-//             allDroplets[i].style.display = "none";
-//         }
-//     }
-// }
-
-canvas.resizeBorders = function () {
-    MENU_HEIGHT = parseInt(menu.element.style.height.replace('px', "")) || parseInt(window.getComputedStyle(menu.element).height.replace("px", ""));
-    menuWidth = parseInt(menu.element.style.width.replace('px', '')) || parseInt(window.getComputedStyle(menu.element).width.replace('px', ''));
-    var rightBorder = document.getElementById('border-right');
-    var bottomBorder = document.getElementById('border-bottom');
-    var screenWidth = window.innerWidth;
-    var screenHeight = window.innerHeight;
-    var canvasSize = parseInt(document.getElementById('canvas-size'));
-    rightBorder.style.height = canvas.element.style.height || "500px";
-    document.getElementsByClassName('flex')[0].style.height = canvas.element.style.height || "500px";
-    bottomBorder.style.width = "100%";
-    if (canvasSize > screenWidth) {
-        rightBorder.style.display = "none";
-    } else {
-        rightBorder.style.width = (screenWidth - canvas.element.offsetWidth) + "px";
-    }
-    if ((canvasSize + MENU_HEIGHT) > screenHeight) {
-        bottomBorder.style.display = "none";
-    } else {
-        bottomBorder.style.height = (screenHeight - canvas.element.offsetHeight - MENU_HEIGHT) + "px";
-    }
-    if (menuWidth < canvasSize) {
-        menu.element.style.width = canvasSize + "px";
-    } else {
-        menu.element.style.width = screenWidth + "px";
-    }
-    // canvas.hideOutOfBoundsDroplets();
-}
-
 var mousedown = false;
 
 startPaint();
