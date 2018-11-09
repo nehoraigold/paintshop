@@ -51,8 +51,8 @@ canvas.createDroplet = function (obj) {
         droplet.style.borderRadius = "50%";
     }
     droplet.style.position = "absolute";
-    droplet.style.left = (obj.clientX - canvasX - 4) + "px";
-    droplet.style.top = (obj.clientY - canvasY - 4) + "px";
+    droplet.style.left = (obj.clientX - canvasX - (paintbrush.size/2)) + "px";
+    droplet.style.top = (obj.clientY - canvasY - (paintbrush.size/2)) + "px";
     return droplet;
 }
 

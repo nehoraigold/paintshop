@@ -182,6 +182,7 @@ div {
     position:relative;
     left:15px;
     overflow:hidden;
+    cursor:crosshair;
 }
 
 @media screen and (max-width: 768px) {
