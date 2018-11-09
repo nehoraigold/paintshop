@@ -86,7 +86,7 @@ canvas.save = function () {
         canvasObj.droplets.push(droplet);
     }
     window.localStorage.setItem("painting", JSON.stringify(canvasObj));
-    showModal("Save successful!", "Your painting \"" + canvasObj.name + "\" has been saved.", "Great!");
+    showModal("Saved!", "Your painting \"" + canvasObj.name + "\" has been saved.", "Great!");
 }
 
 canvas.load = function () {
@@ -107,7 +107,7 @@ canvas.load = function () {
         dropletElement.style.position = "absolute";
         canvas.element.appendChild(dropletElement);
     }
-    showModal("Load Painting", "Your painting " + canvasObj.name + " has been loaded.", "Great!");
+    showModal("Loaded!", "Your painting \"" + canvasObj.name + "\" has been loaded.", "Great!");
 }
 
 canvas.bindCanvasActions = function () {
@@ -163,12 +163,14 @@ function showModal(title, content, buttonText, inputDescription) {
         modalInputDescription.textContent = inputDescription;
     }
     modalButton.textContent = buttonText;
+    newButton = modalButton.cloneNode(true);
+    modalButton.parentNode.replaceChild(newButton,modalButton);
     if (buttonText.toLowerCase() === "save") {
-        modalButton.addEventListener('click', canvas.save);
+        newButton.addEventListener('click', canvas.save);
     } else if (buttonText.toLowerCase() === "load") {
-        modalButton.addEventListener('click', canvas.load);
+        newButton.addEventListener('click', canvas.load);
     } else {
-        modalButton.addEventListener('click',hideModal);
+        newButton.addEventListener('click',hideModal);
     }
     modal.style.display = "block";
 }

@@ -14,8 +14,6 @@ html, body {
 }
 
 section#menu-container {
-    /* height:150px; */
-    /* border:1px solid red; */
     background-image:linear-gradient(lightgray, darkgray, gray, rgb(80, 80, 80));
     display:flex;
     height:88px;
@@ -133,13 +131,14 @@ div {
 #brush-shape-container {
     display:flex;
     flex-direction:column;
-    justify-content:center;
+    position:relative;
+    top:5px;
     margin:0px 10px;
     width:100px;
 }
 
 #choose-size-container, .color-picker-container {
-    margin:15px 5px;
+    margin:2px 5px;
     text-align:center;
 }
 
@@ -156,12 +155,21 @@ input[type='text'], #canvas-size {
 
 .btn {
     font-family: 'Lato', sans-serif;
-    width:60px;
+    height:35px;
     background-color:lightgray;
 }
 
 .btn:hover {
     background-color:white;
+}
+
+.btn.primary-btn {
+    background-color:skyblue;
+    color:black;
+}
+
+.btn.primary-btn:hover {
+    background-color:rgb(190, 239, 255);
 }
 
 .file-buttons {
@@ -226,21 +234,14 @@ input[type='text'], #canvas-size {
     position:absolute;
     bottom:20px;
     right:20px;
-    background-color:white;
     text-align:center;
     padding:10px;
-    width:auto;
+    width:80px;
+    height:auto;
 }
 
-@media screen and (max-width: 768px) {
-    .long {
-        display:none;
-    }
 
-    .short {
-        display:inline-block;
-    }
-
+@media screen and (max-width: 800px) {
     #color-container {
         width:200px;
     }
@@ -271,9 +272,11 @@ input[type='text'], #canvas-size {
         right:0;
     }
 
-    .btn {
+    .button-container .btn {
         font-size:16px;
         padding:0;
+        width:60px;
+        height:25px;
     }
 
     .file-buttons li {
@@ -282,12 +285,28 @@ input[type='text'], #canvas-size {
     }
 }
 
-@media screen and (max-width:500px) {
-    .logo.short {
+@media screen and (max-width:760px) {
+    .long {
         display:none;
     }
 
-    #border-right {
+    .short {
+        display:inline-block;
+    }
+}
+
+@media screen and (max-width:580px) {
+    .color {
+        margin:2px;
+    }
+
+    #color-container {
+        width:170px;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .logo.short {
         display:none;
     }
 }
