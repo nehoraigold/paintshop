@@ -54,6 +54,7 @@ canvas.createDroplet = function (obj) {
 canvas.updateSize = function(obj) {
     canvas.element.style.width = obj.target.value + "px";
     canvas.element.style.height = obj.target.value + "px";
+    canvas.resizeBorders();
 }
 
 canvas.save = function () {
@@ -131,6 +132,8 @@ function bindWindowActions() {
     window.addEventListener('mousedown', mouseHold);
     window.addEventListener('mouseup', mouseHold);
     window.addEventListener('click', mouseHold);
+    window.addEventListener('load',canvas.resizeBorders);
+    window.addEventListener('resize',canvas.resizeBorders);
 }
 
 function startPaint() {
@@ -146,6 +149,17 @@ function mouseHold(event) {
     } else {
         mousedown = false;
     }
+}
+
+canvas.resizeBorders = function() {
+    MENU_HEIGHT = 88;
+    var screenWidth = window.innerWidth;
+    var screenHeight = window.innerHeight;
+    document.getElementById('border-right').style.height = canvas.element.style.height || "500px";
+    document.getElementsByClassName('flex')[0].style.height = canvas.element.style.height || "500px";
+    document.getElementById('border-bottom').style.width = "100%";
+    document.getElementById('border-right').style.width = (screenWidth - parseInt(document.getElementById('canvas-size').value)) + "px";
+    document.getElementById('border-bottom').style.height = (screenHeight - parseInt(document.getElementById('border-right').style.height.replace("px","")) - MENU_HEIGHT) + "px";
 }
 
 var mousedown = false;

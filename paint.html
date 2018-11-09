@@ -49,7 +49,7 @@
                         </select>
                     </div>
                     <div id='choose-size-container'>
-                        Size:<br/><input id='canvas-size' type='number' value='500' min='500' max='1500' />
+                        Size:<br /><input id='canvas-size' type='number' value='500' min='500' max='1500' />
                     </div>
                     <div class='button-container'>
                         <ul class='file-buttons'>
@@ -61,9 +61,11 @@
                 </div>
             </div>
         </section>
-        <section class='canvas-container row'>
-            <div id='canvas'></div>
-            <div id='border-right' class='background-color'></div>
+        <section class='canvas-container row background-color'>
+            <div class='flex'>
+                <div id='canvas'></div>
+                <div id='border-right' class='background-color'></div>
+            </div>
             <div id='border-bottom' class='background-color'></div>
         </section>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
