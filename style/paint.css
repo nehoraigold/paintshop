@@ -1,8 +1,3 @@
-/*
-font-family: 'Lato', sans-serif;
-font-family: 'Dancing Script', cursive;
-*/
-
 html, body {
     font-family: 'Lato', sans-serif;
     height:100%;
@@ -19,10 +14,11 @@ section#menu-container {
     height:88px;
     z-index:123;
     position:relative;
+    border-bottom:5px solid black;
+    box-sizing:content-box;
 }
 
 div {
-    /* border:1px solid red; */
     display:inline-block;
 }
 
@@ -35,6 +31,9 @@ div {
     margin:10px;
     line-height:1;
     background-image:linear-gradient(to right, firebrick, orange, yellow, lightgreen, skyblue, purple);
+    user-select: none;
+    cursor:default;
+    pointer-events: none;
 }
 
 .short{
@@ -52,7 +51,6 @@ div {
 }
 
 #color-container {
-    /* border:1px solid red; */
     width:auto;
     height:88px;
     display:flex;
@@ -67,6 +65,7 @@ div {
     height:3vw;
     width:3vw;
     margin:1px 4px 1px 4px;
+    cursor:pointer;
 }
 
 .color#color-black {
@@ -120,6 +119,7 @@ div {
     border-radius:50%;
     border:3px solid black;
     background-color:white;
+    cursor:pointer;
 }
 
 .form-control {
@@ -227,7 +227,8 @@ input[type='text'], #canvas-size {
 
 #modal h4 {
     font-family:'Dancing Script', cursive;
-    font-size:40px;
+    font-weight:600;
+    font-size:38px;
 }
 
 #modal button {
