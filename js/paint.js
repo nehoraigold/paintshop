@@ -59,7 +59,6 @@ canvas.createDroplet = function (obj) {
 canvas.updateSize = function (obj) {
     canvas.element.style.width = obj.target.value + "px";
     canvas.element.style.height = obj.target.value + "px";
-    canvas.resizeBorders();
 }
 
 canvas.saveOrLoad = function (event) {
@@ -184,8 +183,6 @@ function bindWindowActions() {
     window.addEventListener('mousedown', mouseHold);
     window.addEventListener('mouseup', mouseHold);
     window.addEventListener('click', mouseHold);
-    window.addEventListener('load', canvas.resizeBorders);
-    window.addEventListener('resize', canvas.resizeBorders);
 }
 
 function startPaint() {
